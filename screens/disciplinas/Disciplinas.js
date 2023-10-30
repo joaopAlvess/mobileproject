@@ -46,7 +46,7 @@ const Disciplinas = ({ navigation }) => {
         {disciplinas.map((item, i) => (
           <Card key={i} mode='outlined' style={{ marginBottom: 10 }}>
             <Card.Content>
-              <Text variant="titleLarge">{item.nome}</Text>
+              <Text variant="titleLarge">Nome: {item.nome}</Text>
             </Card.Content>
             <Card.Actions>
               <IconButton 
