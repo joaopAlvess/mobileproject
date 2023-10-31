@@ -5,9 +5,13 @@ import { ScrollView, View } from 'react-native'
 import { Button, Text, TextInput } from 'react-native-paper'
 import cursoValidator from '../../validators/cursoValidator'
 import { mask } from 'remask'
+import { Picker } from '@react-native-picker/picker';
+
 
 
 const CursosForm = ({ navigation, route }) => {
+
+  const [selectedLanguage, setSelectedLanguage] = useState();
 
   let curso = {
     nome: '',
@@ -55,33 +59,10 @@ const CursosForm = ({ navigation, route }) => {
             <TextInput
               style={{ marginTop: 10 }}
               mode='outlined'
-              label='CPF'
-              value={values.cpf}
-              onChangeText={(value)=>{setFieldValue('cpf',  mask(value, '999.999.999-99') )}}
-            />
-            <TextInput
-              style={{ marginTop: 10 }}
-              mode='outlined'
-              label='Data'
-              value={values.data}
-              onChangeText={(value)=>{setFieldValue('data',  mask(value, '99/99/9999') )}}
-            />
-            <TextInput
-              style={{ marginTop: 10 }}
-              mode='outlined'
-              label='Telefone'
-              value={values.telefone}
-              onChangeText={(value)=>{setFieldValue('telefone',  mask(value, '(99) 99999-9999') )}}
-            />
-
-            <TextInput
-              style={{ marginTop: 10 }}
-              mode='outlined'
               label='Nome'
               value={values.nome}
               onChangeText={handleChange('nome')}
             />
-
             {(errors.nome && touched.nome) &&
               <Text style={{ color: 'red' }}>{errors.nome}</Text>
             }
@@ -97,13 +78,29 @@ const CursosForm = ({ navigation, route }) => {
             {(errors.duracao && touched.duracao) &&
               <Text style={{ color: 'red', marginBottom: 5 }}>{errors.duracao}</Text>
             }
-            <TextInput
-              style={{ marginTop: 10 }}
-              mode='outlined'
-              label='Modalidade'
-              value={values.modalidade}
-              onChangeText={handleChange('modalidade')}
-            />
+
+            <Picker
+              style={{ marginTop: 10, padding: 10, fontSize: 15 }}
+              selectedValue={values.modalidade}
+              onValueChange={handleChange('modalidade')
+              }>
+              <Picker.Item
+                mode='outlined'
+                label="Modalidade"
+                value="m" />
+              <Picker.Item
+                mode='outlined'
+                label="Presencial"
+                value="p" />
+              <Picker.Item
+                mode='outlined'
+                label="Hibrído"
+                value="h" />
+              <Picker.Item
+                mode='outlined'
+                label="Hibrído"
+                value="h" />
+            </Picker>
             {(errors.modalidade && touched.modalidade) &&
               <Text style={{ color: 'red', marginBottom: 5 }}>{errors.modalidade}</Text>
             }

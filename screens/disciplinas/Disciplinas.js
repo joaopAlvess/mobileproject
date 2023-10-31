@@ -47,6 +47,7 @@ const Disciplinas = ({ navigation }) => {
           <Card key={i} mode='outlined' style={{ marginBottom: 10 }}>
             <Card.Content>
               <Text variant="titleLarge">Nome: {item.nome}</Text>
+              <Text variant="bodyMedium">Curso: {item.curso_id}</Text>
             </Card.Content>
             <Card.Actions>
               <IconButton 
